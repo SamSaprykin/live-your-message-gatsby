@@ -7,7 +7,6 @@ const CategoryList = ({
   categories,
   listingType,
 }) => {
-  console.log(categories)
   return (
     
     <CategoryContent>
@@ -53,7 +52,8 @@ export const CategoryContent = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
+  padding-top:16px;
   @media ${device.laptop} {
     padding: 24px 30px;
     justify-content: space-between;
@@ -70,25 +70,6 @@ export const CategoryContent = styled.div`
     padding: 0;
     overflow-x: scroll;
     justify-content: flex-start;
-    div {
-      width: 300%;
-      height: auto;
-      a {
-        width: 180px;
-        :nth-of-type(2) {
-          width: 180px;
-        }
-        :nth-of-type(1) {
-          width: 80px;
-        }
-        :nth-of-type(5) {
-          width: 130px;
-        }
-        :nth-of-type(4) {
-          width: 170px;
-        }
-      }
-    }
   }
 `
 
@@ -112,7 +93,7 @@ const ScrollWrapper = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   width: 100%;
   @media ${device.laptop} {
     padding: 24px 0;

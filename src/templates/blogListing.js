@@ -7,6 +7,7 @@ import BlogListing from "../components/BlogListing/BlogListing"
 import useFeaturedPost from "../hooks/useFeaturedPost"
 import BlogCard from "../components/BlogCard/BlogCard"
 import CategoryList from "../components/CategoryList/CategoryList"
+import SubscribeSection from "../components/SubscribeSection/SubscribeSection"
 
 const BlogPostListing = props => {
   const blogPosts = props.data.allContentfulBlogPost.edges
@@ -24,6 +25,7 @@ const BlogPostListing = props => {
         {featured_post}
         <CategoryList categories={categoriesList} listingType="/blog"/>
         <BlogListing data={blogPosts}/>
+        <SubscribeSection />
     </Container>
   </Layout>
   )
