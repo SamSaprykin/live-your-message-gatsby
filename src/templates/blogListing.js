@@ -9,6 +9,13 @@ import BlogCard from "../components/BlogCard/BlogCard"
 import CategoryList from "../components/CategoryList/CategoryList"
 import SubscribeSection from "../components/SubscribeSection/SubscribeSection"
 
+const subscribeSectionData = {
+  subhead:"WEEKLY SALES NEWSLETTER",
+  title:"Actionable sales advice",
+  text:"Get actionable sales advice read by over 200,000 sales professionals every week.",
+  ctaText:"Subscribe",
+}
+
 const BlogPostListing = props => {
   const blogPosts = props.data.allContentfulBlogPost.edges
   const featuredPost = useFeaturedPost()
@@ -25,7 +32,13 @@ const BlogPostListing = props => {
         {featured_post}
         <CategoryList categories={categoriesList} listingType="/blog"/>
         <BlogListing data={blogPosts}/>
-        <SubscribeSection />
+        <SubscribeSection 
+          subhead={subscribeSectionData.subhead}
+          title={subscribeSectionData.title}
+          text={subscribeSectionData.text}
+          ctaText={subscribeSectionData.ctaText}
+          type="small"
+        />
     </Container>
   </Layout>
   )

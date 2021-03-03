@@ -6,7 +6,15 @@ import { device } from "../../styles/constants"
 
 
 
-const SubscribeSection = ({data}) => {
+const SubscribeSection = ({
+  subhead,
+  title,
+  text,
+  ctaText,
+  ctaInfo,
+  type,
+  ...otherProps
+}) => {
   
   const [inputs, setInputs] = useState({
     email: "",
@@ -80,38 +88,54 @@ const SubscribeSection = ({data}) => {
   return (
     <SubscribeWrapper>
         <FormInfo>
-          <SubscribeSubHead>
-            WEEKLY SALES NEWSLETTER
-          </SubscribeSubHead>
-          <SubscribeTitle>
-            Actionable sales advice
-          </SubscribeTitle>
-          <SubscribeFormText>
-            Get actionable sales advice read by over 200,000 sales professionals every week.  
-          </SubscribeFormText>
+          {subhead && (
+            <SubscribeSubHead>
+              {subhead}
+            </SubscribeSubHead>
+          )}
+          {title && (
+            <SubscribeTitle type={type}>
+              {title}
+            </SubscribeTitle>
+          )}
+          {text && (
+            <SubscribeFormText dangerouslySetInnerHTML={{ __html:  text }} />
+          )}
+         
         </FormInfo>
         
         <SubscribeForm 
           onSubmit={handleOnSubmit}
           method="post"
+          type={type}
         >
           <InputContainer>
             <StyledInput 
-              placeholder="email@website.com" 
+              placeholder="Enter your email" 
               onChange={handleOnChange}
               onBlur={checkEmailInput}
               type="email" 
               id="email" 
             />
-            <button type="submit" >
-              Subscribe
-            </button>
+            
+            {!ctaInfo &&   (
+              <button type="submit" >
+                {ctaText}
+              </button>
+            )}
           </InputContainer>
+          
           <FormTextError error={errors.emailError}><span>{errors.emailError}</span></FormTextError>
           <AgreeText>
             <input type="checkbox" />
             <p>I agree to receive communications from Close. I can unsubscribe at any time.</p>
           </AgreeText>
+          {ctaInfo && (
+            <ButtonCta type="submit" >
+              <h5>{ctaText}</h5>
+              <span>{ctaInfo}</span>
+            </ButtonCta>
+          )}
         </SubscribeForm>
     </SubscribeWrapper>
     
@@ -133,6 +157,9 @@ const SubscribeWrapper = styled.div`
     flex-direction: column;
     align-items:center;
     padding:80px 0 240px;
+    @media ${device.tablet} {
+      padding:32px 0;
+    }
 `
 
 const FormInfo = styled.div`
@@ -153,9 +180,13 @@ const SubscribeSubHead = styled.h5`
 
 const SubscribeTitle = styled.h2`
     font-size:48px;
+    font-size: ${({ type }) => {
+      if (type === "small") return "48px"
+      if (type === "big") return "64px"
+    }};
     line-height: 64px;
     margin-bottom:24px;
-    font-weight: 600;
+    font-weight: 700;
     color: #3e444e;
     font-family:Inter,system-ui,sans-serif;
     @media ${device.tablet} {
@@ -164,7 +195,7 @@ const SubscribeTitle = styled.h2`
     }
 `
 const SubscribeFormText = styled.p`
-    font-size:24px;
+    font-size:23px;
     line-height:32px;
     margin-bottom:16px;
     color: #7b85a0;
@@ -187,13 +218,16 @@ const SubscribeFormText = styled.p`
 const SubscribeForm = styled.form`
     margin:0 auto;
     width:100%;
-    max-width:500px;
+    max-width: ${({ type }) => {
+      if (type === "small") return "500px"
+      if (type === "big") return "600px"
+    }};
     display:flex;
     flex-direction:column;
     position:relative;
-    z-index:2;
-    @media ${device.mobileL} {
-
+    
+    @media ${device.tablet} {
+      max-width:500px;
     }
 `
 
@@ -235,6 +269,38 @@ const InputContainer = styled.div`
         height:70px;
     }
 `
+const ButtonCta = styled.button`
+  height:auto;
+  background: rgb(67, 100, 175);
+  color: rgb(255, 255, 255);
+  border: 0px solid rgb(67, 100, 175);
+  width: 100%;
+  position:relative;
+  right:0px;
+  outline:none;
+  cursor:pointer;
+  padding:13px 20px;
+  border-radius: 0px 3px 3px 0px !important;
+  margin-top:24px;
+  :hover {
+    background: rgb(74, 111, 193);
+  }
+  h5 {
+    margin-bottom:0;
+    font-size:20px;
+    line-height:24px;
+    color:white;
+    font-family:Inter,system-ui,sans-serif;
+    font-weight:500;
+  }
+  span {
+    margin-bottom:0;
+    font-size:11px;
+    color:white;
+    font-family:Inter,system-ui,sans-serif;
+    font-weight:300;
+  }
+`
 
 
 const StyledInput = styled.input`
@@ -245,7 +311,6 @@ const StyledInput = styled.input`
     font-weight: 400 !important;
     border: 1px solid #DBDBDB !important;
     border-radius: 3px 0px 0px 3px !important;
-    border-right: 0px !important;
     outline:none;
     padding: 12px 0px 10px 10px !important;
     font-size:17px;
@@ -268,7 +333,7 @@ const FormTextError = styled.div`
   height:24px;
   position:relative;
   overflow:hidden;
-  margin-top:12px;
+  margin-top:8px;
   span {
       color:#FA4E4E;
       font-family:Inter,system-ui,sans-serif;

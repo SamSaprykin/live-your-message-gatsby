@@ -3,7 +3,6 @@ import styled from "styled-components"
 import PropTypes from "prop-types"
 import { device, colors } from "../../styles/constants"
 import Image from "gatsby-image"
-import { useStaticQuery, graphql } from "gatsby"
 import { Link } from "gatsby"
 
 /*

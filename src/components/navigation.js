@@ -99,7 +99,7 @@ const StyledUl = styled.ul`
   background-color: white;
   position:fixed;
   top:0;
-  z-index:100;
+  z-index:1;
   height:auto;
   box-shadow:4px 14px 35px rgba(6,13, 54, 0.08);
   @media (max-width: 1280px) {
