@@ -1,10 +1,15 @@
 import styled from "styled-components"
 
 export const MainWrapper = styled.div`
-  margin: 0;
+  margin-top: 128px;
   display: flex;
+  position:relative;
+  overflow:hidden;
   min-height: 100vh;
   flex-direction: column;
+  @media (max-width: 425px) {
+    margin-top: 96px;
+  }
 `
 
 export const Container = styled.div`
@@ -12,6 +17,22 @@ export const Container = styled.div`
     width: 100%;
     margin: 0 auto;
     max-width: 1170px;
+    @media (max-width: 768px) {
+      padding: 0 20px;
+    }
+`
+
+export const GradientBackground = styled.div`
+  position: absolute;
+  width: 200%;
+  height: 1600px;
+  transform: skewY(
+    -5deg
+  );
+  z-index: -1;
+  top: 300px;
+  background: #f2f3f9;
+  background: linear-gradient(0deg, #fff 0, #f2f3f9 100%);
 `
 export const Row = styled.div`
   display: flex;

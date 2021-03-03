@@ -158,6 +158,10 @@ const SubscribeTitle = styled.h2`
     font-weight: 600;
     color: #3e444e;
     font-family:Inter,system-ui,sans-serif;
+    @media ${device.tablet} {
+      font-size:24px;
+      line-height: 32px;
+    }
 `
 const SubscribeFormText = styled.p`
     font-size:24px;
@@ -166,6 +170,14 @@ const SubscribeFormText = styled.p`
     color: #7b85a0;
     font-weight:400;
     font-family:Inter,system-ui,sans-serif;
+    @media ${device.tablet} {
+      font-size:16px;
+      line-height:24px;
+    }
+    @media ${device.mobileL} {
+      font-size:15px;
+      line-height:20px;
+    }
 `
 
 
@@ -181,7 +193,7 @@ const SubscribeForm = styled.form`
     position:relative;
     z-index:2;
     @media ${device.mobileL} {
-        max-width:295px;
+
     }
 `
 
@@ -245,8 +257,7 @@ const StyledInput = styled.input`
     padding-bottom:4px;
     box-sizing:border-box;
     @media ${device.mobileL} {
-        margin:20px;
-        font-size:22px;
+     
     }
     
 `

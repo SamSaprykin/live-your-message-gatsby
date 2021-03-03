@@ -8,17 +8,19 @@ const BlogListing = ({
   data
 }) => {
   return (
-    <WrapperCards>
-      {
-        data.map((cardItem,index) => {
-            return (
-              <PostItem key={index}>
-                <BlogCard cardData={cardItem.node} />
-              </PostItem>
-            )
-        })
-      }
-    </WrapperCards> 
+    <>
+      <WrapperCards>
+        {
+          data.map((cardItem,index) => {
+              return (
+                <PostItem key={index}>
+                  <BlogCard cardData={cardItem.node} />
+                </PostItem>
+              )
+          })
+        }
+      </WrapperCards> 
+    </>
   )
 }
 
@@ -36,10 +38,13 @@ const WrapperCards = styled.div`
    box-sizing: inherit;
    margin-left: -16px;
    margin-right: -16px;
-   margin-bottom: 16px;
+   margin-bottom: 60px;
    display: flex;
    flex-wrap: wrap;
    justify-content:space-between;
+   @media ${device.tablet} {
+    margin-bottom: 32px;
+   }
 `
 const PostItem = styled.div`
   padding:16px;
@@ -49,6 +54,8 @@ const PostItem = styled.div`
     width:100%;
   }
 `
+
+
 
 
 

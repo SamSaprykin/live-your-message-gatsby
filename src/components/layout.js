@@ -2,9 +2,10 @@ import React from "react"
 import PropTypes from "prop-types"
 import { StaticQuery, graphql } from "gatsby"
 import { GlobalStyle } from "./globalStyle"
-import { MainWrapper } from "./layoutComponents"
+import { MainWrapper, GradientBackground } from "./layoutComponents"
 import Header from "./header"
 import Footer from "./footer"
+import Navigation from "./navigation"
 import 'typeface-inter'
 
 const Layout = ({ children }) => (
@@ -22,7 +23,8 @@ const Layout = ({ children }) => (
       <>
         <GlobalStyle />
         <MainWrapper>
-          <Header siteTitle={data.site.siteMetadata.title} />
+          <GradientBackground />
+          <Navigation  />
           <main>{children}</main>
           <Footer />
         </MainWrapper>
