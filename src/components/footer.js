@@ -16,6 +16,8 @@ const Footer = ({ className }) => (
             >
                 <XperincifyLogo
                   src="/xperiencify-footer-logo.svg" 
+                  width="148"
+                  height="30"
                 />
             </Link>
           </FooterLogo>

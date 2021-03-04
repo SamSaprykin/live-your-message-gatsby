@@ -36,6 +36,8 @@ const Navigation = ({}) => {
                     <Link to="/">
                         <XperincifyLogo
                           src="/xperiencify-logo.svg" 
+                          width="196"
+                          height="40"
                         />
                     </Link> 
                 </HeaderLogo>
