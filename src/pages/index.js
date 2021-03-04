@@ -8,7 +8,7 @@ import SEO from "../components/seo"
 import HeroSection from "../components/HeroSections/HeroSection"
 import TrustBar from "../components/TrusBar/TrustBar"
 import ProductWorkflow from "../components/ProductWorkflow/ProductWorkflow"
-
+import ProductReviews from "../components/ProductReviews/ProductReviews"
 const heroIndexData = {
   contentData:{
     title:"Turn more leads into revenue",
@@ -72,6 +72,33 @@ const WorkflowData = {
   ]
 }
 
+const productReviewsData = {
+  titleReview:"Onboard in minutes–start selling today",
+  descriptionReview:"Some CRMs take months to implement. With Close, you can set up or migrate in under 10 minutes. We even import past emails from G Suite so you don’t skip a beat.",
+  ratings:[
+    {
+      logo:"/software-advice-logo.png",
+      ratingScore:"5",
+      ratingStar:5,
+    },
+    {
+      logo:"/g2crowd-logo.svg",
+      ratingScore:"4.3",
+      ratingStar:4,
+    },
+    {
+      logo:"/capterra-logo.svg",
+      ratingScore:"5",
+      ratingStar:5,
+    },
+    {
+      logo:"/getapp-logo.svg",
+      ratingScore:"4.8",
+      ratingStar:5,
+    }
+  ]
+}
+
 const IndexPage = () => {
     
   return (
@@ -93,6 +120,11 @@ const IndexPage = () => {
         titleWorkflow={WorkflowData.titleWorkflow}
         descriptionWorkflow={WorkflowData.descriptionWorkflow}
         stepsData={WorkflowData.stepsWorkflow}
+      />
+      <ProductReviews 
+        titleReview={productReviewsData.titleReview}
+        descriptionReview={productReviewsData.descriptionReview}
+        reviewsData={productReviewsData.ratings}
       />
   </Layout>
   )
