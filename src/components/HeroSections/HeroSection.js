@@ -29,7 +29,7 @@ const HeroSection = ({
   function closeModal(){
     setIsOpen(false);
   }
-  console.log(otherProps)
+  
   return (
     <Container>
       <SectionSideBySide

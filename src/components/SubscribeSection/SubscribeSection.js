@@ -1,10 +1,8 @@
 import React, {useState} from "react"
 import { navigate } from 'gatsby'
 import axios from "axios"
-import styled, { keyframes }  from "styled-components"
+import styled from "styled-components"
 import { device } from "../../styles/constants"
-
-
 
 const SubscribeSection = ({
   subhead,

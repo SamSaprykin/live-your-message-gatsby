@@ -58,7 +58,7 @@ const BignetworkButtonStyled = styled.button`
   width: 100%;
   display:block;
   max-width: ${({ sizeType }) => {
-    if (sizeType === "big") return "170px"
+    if (sizeType === "big") return "190px"
     if (sizeType === "small") return "124px"
   }};
   padding: ${({ type }) => {

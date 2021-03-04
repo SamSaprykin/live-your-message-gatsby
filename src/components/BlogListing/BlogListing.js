@@ -1,11 +1,12 @@
 import React from "react"
 import styled from "styled-components"
-import { device, colors } from "../../styles/constants"
+import { device } from "../../styles/constants"
 import BlogCard from "../BlogCard/BlogCard"
-
+import BannerAd from "../BannerAd/BannerAd"
 
 const BlogListing = ({
-  data
+  data,
+  bannerAdData
 }) => {
   return (
     <>
@@ -13,9 +14,23 @@ const BlogListing = ({
         {
           data.map((cardItem,index) => {
               return (
-                <PostItem key={index}>
-                  <BlogCard cardData={cardItem.node} />
-                </PostItem>
+                <>
+                  {index === 4 && (
+                    <BannerAd
+                      title={bannerAdData.title}
+                      text={bannerAdData.text}
+                      cta={bannerAdData.cta}
+                      trial={bannerAdData.trial}
+                      imageSrc={bannerAdData.imageSrc}
+                    />
+                  )}
+                  {cardItem.node && (
+                    <PostItem key={index}>
+                      <BlogCard cardData={cardItem.node} />
+                    </PostItem>
+                  )}
+                </>
+                
               )
           })
         }

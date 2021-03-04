@@ -223,6 +223,8 @@ export const XperiencifyImage = ({ src, alt, className, ...otherProps }) => {
   } else if (src?.resize || src) {
     return (
       <StyledImg
+        width={otherProps.width}
+        height={otherProps.height}
         src={src?.resize?.src || src}
         className={className}
         alt={alt ? alt : "Product Illustration"}
@@ -236,6 +238,7 @@ export const XperiencifyImage = ({ src, alt, className, ...otherProps }) => {
 
 const StyledImg = styled.img`
     margin-bottom:0;
+    object-fit:contain;
 `
 
 

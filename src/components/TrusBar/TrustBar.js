@@ -18,6 +18,8 @@ const TrustBar = ({ logoImages, margin, headline }) => {
             return (
                 <StyledLogo>
                     <XperiencifyImage
+                        width="106" 
+                        height="60"
                         src={
                         // image?.logo?.localFile?.childImageSharp ||
                         image?.logo?.source_url || image

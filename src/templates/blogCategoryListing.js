@@ -1,6 +1,5 @@
 import React from "react"
 import Layout from "../components/layout"
-import { Link } from "gatsby"
 import { Container } from "../components/layoutComponents"
 import SEO from "../components/seo"
 import BlogListing from "../components/BlogListing/BlogListing"

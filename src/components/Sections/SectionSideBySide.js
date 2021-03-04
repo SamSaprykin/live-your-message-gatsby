@@ -24,10 +24,10 @@ export default function SectionSideBySide({
         small={small}
         reversed={reversed}
       >
-        <SectionCol lg={12} md={12} sm={12} xs={24}>
+        <SectionCol>
           {reversed ? imageSide : contentSide}
         </SectionCol>
-        <SectionCol lg={12} md={12} sm={12} xs={24}>
+        <SectionCol>
           {reversed ? contentSide : imageSide}
         </SectionCol>
       </SectionRow>

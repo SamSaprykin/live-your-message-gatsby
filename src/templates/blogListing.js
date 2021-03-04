@@ -1,8 +1,6 @@
 import React from "react"
 import Layout from "../components/layout"
-import { Link } from "gatsby"
 import { Container } from "../components/layoutComponents"
-import SEO from "../components/seo"
 import BlogListing from "../components/BlogListing/BlogListing"
 import useFeaturedPost from "../hooks/useFeaturedPost"
 import BlogCard from "../components/BlogCard/BlogCard"
@@ -14,6 +12,14 @@ const subscribeSectionData = {
   title:"Actionable sales advice",
   text:"Get actionable sales advice read by over 200,000 sales professionals every week.",
   ctaText:"Subscribe",
+}
+
+const bannerAdData = {
+  title:"Close more deals.",
+  text:"Supercharge your sales with the best CRM for startups and SMBs. Get pipeline view, calling, lead management, email automation, and more.",
+  cta:"Start your free trial",
+  trial:"14 days free trial.No credit card required.",
+  imageSrc:"/close-crm-screenshot.svg",
 }
 
 const BlogPostListing = props => {
@@ -31,7 +37,7 @@ const BlogPostListing = props => {
     <Container>
         {featured_post}
         <CategoryList categories={categoriesList} listingType="/blog"/>
-        <BlogListing data={blogPosts}/>
+        <BlogListing data={blogPosts} bannerAdData={bannerAdData}/>
         <SubscribeSection 
           subhead={subscribeSectionData.subhead}
           title={subscribeSectionData.title}
