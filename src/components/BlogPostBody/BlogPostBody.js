@@ -1,25 +1,44 @@
-import React, { useState } from "react"
+import React, {useEffect, useState} from 'react'
+import { useInView } from "react-intersection-observer"
 import styled from "styled-components"
-import PropTypes from "prop-types"
-import { device, colors } from "../../styles/constants"
-import Image from "gatsby-image"
-import { Link } from "gatsby"
-import {
-    XperiencifyImage,
-} from "../BlockElements/BlockElements"
-
-
+import BlogNav from '../BlogNav/BlogNav'
+import BlogPostHeader from "../BlogPostHeader/BlogPostHeader"
 const BlogPostBody = ({
+  postData,
   data,
+  headings,
+  slug,
   ...otherProps
 }) => {
-    
+    const [ref, inView] = useInView({
+        rootMargin: "-330px",
+    })
+    const [visible, setVisible] = useState("false")
+    useEffect(() => {
+        if (inView) {
+          setVisible("true")
+        } else {
+          setVisible("false")
+        }
+    }, [inView])
   return (
-    <BodyWrapper >
-        <div dangerouslySetInnerHTML={{ __html:  data }} />
+    <BodyWrapper  ref={ref}>
+        <ContentWrapper>
+            <BlogPostHeader 
+                postTitle={postData.blogPostTitle}
+                postMainImage={postData.blogPostMainImage}
+                postCategory={postData.blogPostCategory}
+                postAuthor={postData.blogPostAuthor}
+            />
+            <div className="body" dangerouslySetInnerHTML={{ __html:  data }} />
+        </ContentWrapper>
+        <BlogNav headings={headings} slug={slug} posElement={visible} />
     </BodyWrapper>
   )
 }
+
+
+
 
 export default BlogPostBody
 
@@ -31,11 +50,20 @@ BlogPostBody.defaultProps = {
 
 }
 
-const BodyWrapper = styled.div`
-    max-width: 680px;
+const ContentWrapper = styled.div`
+    display:flex;
+    flex-direction:column;
     width:100%;
-    position: relative;
-    margin-top:32px;
+    max-width:640px;
+    
+`
+
+const BodyWrapper = styled.div`
+    max-width: 1170px;
+    width:100%;
+    margin-top:48px;
+    display:flex;
+    justify-content:space-between;
     font-family:Inter,system-ui,sans-serif;
     p {
         margin-bottom:24px;
@@ -58,10 +86,3 @@ const BodyWrapper = styled.div`
         margin:48px 0;
     }
 `
-
-
-
-
-    
-
-    

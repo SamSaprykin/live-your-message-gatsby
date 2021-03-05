@@ -6,9 +6,6 @@ import SEO from "../components/seo"
 import SubscribeSection from "../components/SubscribeSection/SubscribeSection"
 import BlogPostHeader from "../components/BlogPostHeader/BlogPostHeader"
 import BlogPostBody from "../components/BlogPostBody/BlogPostBody"
-import BlogNav from "../components/BlogNav/BlogNav"
-
-
 
 const subscribeSectionData = {
   subhead:"WEEKLY SALES NEWSLETTER",
@@ -16,10 +13,6 @@ const subscribeSectionData = {
   text:"Get actionable sales advice read by over 200,000 sales professionals every week.",
   ctaText:"Subscribe",
 }
-
-
-
-
 
 const BlogPostTemplate = props => {
   
@@ -31,14 +24,13 @@ const BlogPostTemplate = props => {
     <Layout>
       <Container>
       <SEO title="Blog post template" />
-      <BlogPostHeader 
-        postTitle={postData.blogPostTitle}
-        postMainImage={postData.blogPostMainImage}
-        postCategory={postData.blogPostCategory}
-        postAuthor={postData.blogPostAuthor}
+
+      <BlogPostBody 
+        data={postBody} 
+        headings={headings} 
+        slug={slug} 
+        postData={postData}
       />
-      <BlogNav headings={headings} slug={slug}/>
-      <BlogPostBody data={postBody} />
       <SubscribeSection 
         subhead={subscribeSectionData.subhead}
         title={subscribeSectionData.title}

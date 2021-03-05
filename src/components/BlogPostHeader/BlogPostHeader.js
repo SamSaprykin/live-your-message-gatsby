@@ -42,7 +42,6 @@ const HeaderWrapper = styled.div`
     max-width: 680px;
     width:100%;
     position: relative;
-    margin-top:32px;
 `
 
 const FeatureImage = styled.div`

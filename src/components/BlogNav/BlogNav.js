@@ -4,14 +4,15 @@ import { AnchorLink } from "gatsby-plugin-anchor-links"
 import { device } from "../../styles/constants"
 
 const BlogNav = ({
+  posElement,
   headings, 
-  slug}) => {
-  console.log(headings)
-  
+  slug}) => {  
+  console.log(posElement)
   return (
     <>
     { headings.length !==0  && (
-        <NavWrapper>
+      <NavContainer>
+        <NavWrapper posElement={posElement}>
             <HeaderNav>Table of Contents</HeaderNav>
             <ListNavs>
                 {headings && headings.map((header,index) => {
@@ -23,25 +24,41 @@ const BlogNav = ({
                     )
                 })}
             </ListNavs>
-        </NavWrapper>
+        </NavWrapper>   
+      </NavContainer>     
     )}
     </>
     
    )
 }
 
-const NavWrapper = styled.div`
-  background-color:white;
-  position:fixed;
-  border-radius: 16px;
-  padding: 2rem .5rem;
-  margin-bottom: 4rem;
-  top:160px;
-  right:6rem;
-  width: 100%;
-  max-width: 370px;
+
+const NavContainer = styled.div`
+  width:100%;
+  max-width:370px;
+  height:auto;
+  position:relative;
   display:flex;
   flex-direction:column;
+  justify-content:flex-end;
+  right:0;
+  top:0;
+`
+const NavWrapper = styled.div`
+  background-color:white;
+  position: ${props =>
+    props.posElement === "false"
+      ? "absolute"
+      : "fixed"};
+  border-radius: 16px;
+  padding: 2rem .5rem;
+  top: ${props =>
+    props.posElement === "false"
+      ? ""
+      : "160px"};
+  
+  width: 100%;
+  max-width: 370px;
   z-index:50;
   @media ${device.tablet} {
     width:100%;
