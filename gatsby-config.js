@@ -61,6 +61,7 @@ module.exports = {
         offset: -180
       }
     },
+    `gatsby-plugin-remove-trailing-slashes`,
     `gatsby-plugin-preload-fonts`,
     `gatsby-plugin-styled-components`,
     // this (optional) plugin enables Progressive Web App + Offline functionality

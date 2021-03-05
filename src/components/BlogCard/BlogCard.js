@@ -30,7 +30,7 @@ const BlogCard = ({
         type={type}
       >
         <ImageCover  type={type}>
-          <Image fluid={cardData.blogPostMainImage.fluid}  alt="Blog cover"/> 
+          <Image fluid={cardData.blogPostMainImage.fluid} loading="eager" alt="Blog cover"/> 
         </ImageCover>
         <CardContent type={type}>
           <CategoryBlog type={type}>
