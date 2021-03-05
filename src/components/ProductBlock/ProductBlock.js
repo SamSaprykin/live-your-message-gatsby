@@ -19,7 +19,7 @@ const ProductBlock = ({
     stepVisual,
     stepReverse,
 }) => {
-  console.log(stepName) 
+   
   return (
     <>
       <ProductBlockWrapper stepReverse={stepReverse}>

@@ -90,6 +90,7 @@ exports.createPages = async ({ graphql, actions }) => {
         allContentfulBlogPost {
             edges {
               node {
+                id
                 slug
                 blogPostCategory
               }
@@ -107,7 +108,8 @@ exports.createPages = async ({ graphql, actions }) => {
           component: path.resolve(`./src/templates/blogPostTemplate.js`),
           context: {
             category: `${edge.node.blogPostCategory}`,
-            next: edge.next
+            next: edge.next,
+            id: edge.node.id,
           },
         })
       })
