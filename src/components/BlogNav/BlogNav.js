@@ -6,12 +6,13 @@ import { device } from "../../styles/constants"
 const BlogNav = ({
   posElement,
   headings, 
+  type,
   slug}) => {  
-  console.log(posElement)
+  
   return (
     <>
     { headings.length !==0  && (
-      <NavContainer>
+      <NavContainer type={type}>
         <NavWrapper posElement={posElement}>
             <HeaderNav>Table of Contents</HeaderNav>
             <ListNavs>
@@ -43,9 +44,23 @@ const NavContainer = styled.div`
   justify-content:flex-end;
   right:0;
   top:0;
+  display: ${props =>
+    props.type === "desktop"
+      ? "flex"
+      : "none"};
+  @media ${device.tablet} {
+    max-width:100%;
+    padding: 2rem .5rem;
+    display: ${props =>
+      props.type === "desktop"
+        ? "none"
+        : "flex"};
+  }
+
 `
 const NavWrapper = styled.div`
   background-color:white;
+  animation:all .1s linear;
   position: ${props =>
     props.posElement === "false"
       ? "absolute"
@@ -56,15 +71,17 @@ const NavWrapper = styled.div`
     props.posElement === "false"
       ? ""
       : "160px"};
-  
+  margin-bottom:50px;
   width: 100%;
   max-width: 370px;
   z-index:50;
   @media ${device.tablet} {
     width:100%;
     left:0;
-    padding-left:72px;
-    top:64px;
+    top:0;
+    margin:0;
+    position:relative;
+    max-width: 100%;
   }
   @media ${device.mobileL} {
     padding-left:16px;
@@ -77,6 +94,7 @@ const NavWrapper = styled.div`
       color: #3e444e !important;
       transition:all .4s ease-in-out;
       cursor:pointer;
+      font-weight: 600;
       ::before {
         content: "→";
         position: absolute;

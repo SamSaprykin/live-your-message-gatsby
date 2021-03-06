@@ -1,12 +1,10 @@
 import React from "react"
-import styled from "styled-components"
 import Layout from "../components/layout"
 import { Container } from "../components/layoutComponents"
 import SEO from "../components/seo"
 import SubscribeSection from "../components/SubscribeSection/SubscribeSection"
-import BlogPostHeader from "../components/BlogPostHeader/BlogPostHeader"
 import BlogPostBody from "../components/BlogPostBody/BlogPostBody"
-
+import SimilarArticlesList from "../components/SimilarArticles/SimilarArticles"
 const subscribeSectionData = {
   subhead:"WEEKLY SALES NEWSLETTER",
   title:"Actionable sales advice",
@@ -18,8 +16,11 @@ const BlogPostTemplate = props => {
   
   const postData = props.data.contentfulBlogPost
   const postBody = props.data.contentfulBlogPost.blogBody.childMarkdownRemark.html
+  const htmlAst = props.data.contentfulBlogPost.blogBody.childMarkdownRemark.htmlAst
   const headings = props.data.contentfulBlogPost.blogBody.childMarkdownRemark.headings
   const slug = props.data.contentfulBlogPost.slug
+  const postInfo = props.pageContext
+ 
   return (
     <Layout>
       <Container>
@@ -30,6 +31,7 @@ const BlogPostTemplate = props => {
         headings={headings} 
         slug={slug} 
         postData={postData}
+        htmlAst={htmlAst}
       />
       <SubscribeSection 
         subhead={subscribeSectionData.subhead}
@@ -38,7 +40,9 @@ const BlogPostTemplate = props => {
         ctaText={subscribeSectionData.ctaText}
         type="small"
       />
+      
     </Container>
+    <SimilarArticlesList categories={postInfo.category} currentArticlePath={postInfo.slug}  />
     </Layout>
   )
 }
@@ -60,6 +64,7 @@ export const blogPostQuery = graphql`
       blogBody {
         childMarkdownRemark {
           html
+          htmlAst
           headings {
             value
             id

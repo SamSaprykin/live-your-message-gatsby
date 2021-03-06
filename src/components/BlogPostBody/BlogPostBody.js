@@ -3,9 +3,19 @@ import { useInView } from "react-intersection-observer"
 import styled from "styled-components"
 import BlogNav from '../BlogNav/BlogNav'
 import BlogPostHeader from "../BlogPostHeader/BlogPostHeader"
+import { device } from "../../styles/constants"
+import rehypeReact from "rehype-react"
+import BannerBlogAd from "../BannerBlogAd/BannerBlogAd"
+
+const renderAst = new rehypeReact({
+    createElement: React.createElement,
+    components: { "banner-blog-ad": BannerBlogAd },
+  }).Compiler
+
 const BlogPostBody = ({
   postData,
   data,
+  htmlAst,
   headings,
   slug,
   ...otherProps
@@ -30,9 +40,12 @@ const BlogPostBody = ({
                 postCategory={postData.blogPostCategory}
                 postAuthor={postData.blogPostAuthor}
             />
-            <div className="body" dangerouslySetInnerHTML={{ __html:  data }} />
+            <BlogNav headings={headings} slug={slug} posElement={visible} type="mobile"/>
+            {
+                renderAst(htmlAst)
+            }
         </ContentWrapper>
-        <BlogNav headings={headings} slug={slug} posElement={visible} />
+        <BlogNav headings={headings} slug={slug} posElement={visible} type="desktop"/>
     </BodyWrapper>
   )
 }
@@ -54,17 +67,22 @@ const ContentWrapper = styled.div`
     display:flex;
     flex-direction:column;
     width:100%;
-    max-width:640px;
-    
+    max-width: 680px;
+
 `
 
 const BodyWrapper = styled.div`
     max-width: 1170px;
     width:100%;
     margin-top:48px;
+    margin-bottom:128px;
     display:flex;
     justify-content:space-between;
     font-family:Inter,system-ui,sans-serif;
+    @media ${device.tablet} {
+        max-width: 680px;
+        margin:48px auto 72px;
+    }
     p {
         margin-bottom:24px;
         color:#3e444e;

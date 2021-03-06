@@ -68,7 +68,6 @@ export const CategoryContent = styled.div`
     width: 100%;
     height: 100%;
     padding: 0;
-    overflow-x: scroll;
     justify-content: flex-start;
   }
 `
@@ -87,6 +86,9 @@ export const CategoryItem = styled(Link)`
   @media ${device.tablet} {
     margin: 0;
   }
+  @media ${device.mobileL} {
+    line-height: 32px;
+  }
 `
 
 const ScrollWrapper = styled.div`
@@ -103,9 +105,13 @@ const ScrollWrapper = styled.div`
     margin: 0;
     padding-bottom: 0;
     justify-content: space-between;
+    flex-wrap:wrap;
   }
   @media ${device.mobileL} {
-    padding: 0 30px;
+    margin-top:30px;
+    padding: 0 12px;
+    flex-direction:column;
+    align-items:flex-start;
   }
 `
 

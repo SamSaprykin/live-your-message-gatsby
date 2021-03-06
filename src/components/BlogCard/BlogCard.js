@@ -1,7 +1,7 @@
-import React, { useState } from "react"
+import React from "react"
 import styled from "styled-components"
 import PropTypes from "prop-types"
-import { device, colors } from "../../styles/constants"
+import { device } from "../../styles/constants"
 import Image from "gatsby-image"
 import { Link } from "gatsby"
 
@@ -20,6 +20,7 @@ const BlogCard = ({
   publishDate,
   categories,
   cardData,
+  realatedCard,
   ...otherProps
 }) => {
   
@@ -29,19 +30,22 @@ const BlogCard = ({
         otherProps={otherProps}
         type={type}
       >
-        <ImageCover  type={type}>
+        <ImageCover  type={type} realatedCard={realatedCard}>
           <Image fluid={cardData.blogPostMainImage.fluid} loading="eager" alt="Blog cover"/> 
         </ImageCover>
-        <CardContent type={type}>
+        <CardContent type={type} realatedCard={realatedCard}>
           <CategoryBlog type={type}>
                 {cardData.blogPostCategory}
           </CategoryBlog>
-          <TitleBlogCard type={type}>
+          <TitleBlogCard type={type} realatedCard={realatedCard}>
                 {cardData.blogPostTitle}
           </TitleBlogCard>
-          <TextCard type={type}>
-                {cardData.blogPostIntro}
-          </TextCard>
+          { realatedCard !== "true" &&
+            <TextCard type={type}>
+                  {cardData.blogPostIntro}
+            </TextCard>
+          }
+          
           {type === "standard" && (
             <BlogCardInfo>
               <BlogPostAuthor type={type}>
@@ -120,6 +124,10 @@ const ImageCover = styled.div`
       ? "60%"
       : "100%"};
   height: auto;
+  height: ${props =>
+    props.realatedCard === "true"
+      ? "172px"
+      : "auto"};
   max-height: ${props =>
     props.type === "featured"
       ? ""
@@ -147,11 +155,12 @@ const CardContent = styled.div`
   padding: ${props =>
     props.type === "featured"
       ? "48px"
+    : props.realatedCard === "true"
+      ? "24px 24px 0"
       : "32px"};
   flex-grow: 1;
-  height:312px;
   height: ${props =>
-    props.type === "featured"
+    props.type === "featured" || props.realatedCard === "true"
       ? "auto"
       : "312px"};
   @media ${device.tablet} {
@@ -181,7 +190,10 @@ const CategoryBlog = styled.h5`
 `
 
 const TitleBlogCard = styled.h3`
-  font-size:24px;
+  font-size: ${props =>
+    props.realatedCard === "true"
+      ? "20px"
+      : "24px"};
   font-family:Inter,system-ui,sans-serif;
   font-weight: 700;
   line-height: 1.33;

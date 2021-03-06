@@ -84,7 +84,7 @@ const SubscribeSection = ({
     }
   }
   return (
-    <SubscribeWrapper>
+    <SubscribeWrapper type={type}>
         <FormInfo>
           {subhead && (
             <SubscribeSubHead>
@@ -154,10 +154,25 @@ const SubscribeWrapper = styled.div`
     display:flex;
     flex-direction: column;
     align-items:center;
-    padding:80px 0 240px;
+    padding:80px 0 120px;
+    border-top: ${({ type }) => {
+      if (type === "small") return "1px solid #f2f3f5"
+      if (type === "big") return ""
+    }};
+    margin-bottom: ${({ type }) => {
+      if (type === "small") return "64px"
+      if (type === "big") return ""
+    }};
     @media ${device.tablet} {
       padding:32px 0;
     }
+    @media ${device.mobileL} {
+      margin-bottom: ${({ type }) => {
+        if (type === "small") return "16px"
+        if (type === "big") return ""
+      }};
+    }
+    
 `
 
 const FormInfo = styled.div`

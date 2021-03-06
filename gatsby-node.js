@@ -110,6 +110,7 @@ exports.createPages = async ({ graphql, actions }) => {
             category: `${edge.node.blogPostCategory}`,
             next: edge.next,
             id: edge.node.id,
+            slug: edge.node.slug,
           },
         })
       })

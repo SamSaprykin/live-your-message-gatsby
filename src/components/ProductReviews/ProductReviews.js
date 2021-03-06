@@ -45,16 +45,16 @@ const ProductReviews = ({
                     </RatingsWrapper>
                 </VisualProductReview>
                 <ContentProductReview>
-                {titleReview && (
-                    <ProductReviewTitle>
-                        {titleReview}
-                    </ProductReviewTitle>
-                )}
-                {descriptionReview && (
-                    <ProductText>
-                        {descriptionReview}
-                    </ProductText>
-                )}
+                    {titleReview && (
+                        <ProductReviewTitle>
+                            {titleReview}
+                        </ProductReviewTitle>
+                    )}
+                    {descriptionReview && (
+                        <ProductText>
+                            {descriptionReview}
+                        </ProductText>
+                    )}
                 </ContentProductReview>
            </ProductBlock>
         </Container>
@@ -102,12 +102,15 @@ const RatingsWrapper = styled.div`
     display: flex;
     flex-wrap: wrap;
     @media ${device.mobileL} {
-        margin:40px 0;
+        margin:12px 0;
     }
 `
 
 const ContentProductReview = styled.div`
     width: 45%;
+    @media ${device.mobileL} {
+       width:100%;
+    }
 `
 
 const ProductReviewTitle = styled.h3`
@@ -137,6 +140,9 @@ const ReviewItem = styled.div`
     display:flex;
     flex-direction:column;
     align-items:center;
+    @media ${device.mobileL} {
+        margin-bottom:24px;
+    }
 `
 
 const ReviewRating = styled.div`

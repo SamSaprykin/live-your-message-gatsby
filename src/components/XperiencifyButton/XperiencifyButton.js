@@ -57,23 +57,24 @@ const BignetworkButtonStyled = styled.button`
   z-index: 10;
   width: 100%;
   display:block;
-  max-width: ${({ sizeType }) => {
+  max-width: ${({ sizeType,type }) => {
+    if (type === "primary") return "100%"
     if (sizeType === "big") return "190px"
     if (sizeType === "small") return "124px"
   }};
   padding: ${({ type }) => {
-    if (type === "primary") return "20px"
+    if (type === "primary") return "12px 20px"
     if (type === "secondary") return "20px 24px"
     if (type === "tertiary" ) return "20px"
   }};
   
   background-color: ${({ type }) => {
-    if (type === "primary") return "transparent"
+    if (type === "primary") return "rgb(92, 174, 205)"
     if (type === "secondary") return "white"
     if (type === "tertiary" ) return "#4364af"
   }};
   border: ${({ type }) => {
-    if (type === "primary") return "1px solid white"
+    if (type === "primary") return "rgb(92, 174, 205)"
     if (type === "secondary") return "none"
     if (type === "tertiary" ) return "none"
   }};
@@ -97,7 +98,7 @@ const BignetworkButtonStyled = styled.button`
       if (type === "tertiary" ) return "translate(0,-2px)"
     }};
     opacity: ${({ type }) => {
-      if (type === "primary") return ""
+      if (type === "primary") return ".9"
       if (type === "secondary") return ".8"
       if (type === "tertiary" ) return ""
     }};

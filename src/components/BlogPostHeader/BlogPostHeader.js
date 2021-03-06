@@ -4,6 +4,7 @@ import { Link } from "gatsby"
 import {
     XperiencifyImage,
 } from "../BlockElements/BlockElements"
+import { device } from "../../styles/constants"
 
 const BlogPostHeader = ({
   postTitle,
@@ -76,6 +77,9 @@ const PostTitle = styled.h1`
     font-weight: 700;
     color: #3e444e;
     letter-spacing: -0.5px;
+    @media ${device.tablet} {
+        font-size:32px;
+    }
 `
 
 
