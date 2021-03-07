@@ -72,6 +72,11 @@ export default (props) => (
                             ...GatsbyContentfulFluid_withWebp
                             }
                         }
+                        blogBody {
+                          childMarkdownRemark {
+                            timeToRead
+                          }
+                        }
                         featured
                     }
                   }

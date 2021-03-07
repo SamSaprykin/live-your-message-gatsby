@@ -13,32 +13,34 @@ const Footer = ({ className }) => (
           <FooterLogo>
             <Link 
               to="/"
+              aria-label="Footer logo"
             >
                 <XperincifyLogo
                   src="/xperiencify-footer-logo.svg" 
                   width="148"
                   height="30"
+                  alt="footer-logo"
                 />
             </Link>
           </FooterLogo>
         </StyledLi>
         <StyledLi>
             <StyledLink 
-              to=""
+              to="/products"
             >
                 <span>Products</span>
             </StyledLink>
         </StyledLi>
         <StyledLi>
             <StyledLink 
-              to=""
+              to="/pricing"
             >
                 <span>Pricing</span>
             </StyledLink>
         </StyledLi>
         <StyledLi>
             <StyledLink 
-              to=""
+              to="/blog"
             >
                 <span>Blog</span>
             </StyledLink>
@@ -46,13 +48,13 @@ const Footer = ({ className }) => (
         
      </LinksFooter>
      <FooterFooter>
-         <StyledSocLink href="https://www.facebook.com/">
+         <StyledSocLink href="https://www.facebook.com/" aria-label="facebook Xperiencify">
            <XperiencifyIcons type="social-fb" />
          </StyledSocLink>
-         <StyledSocLink href="https://www.youtube.com/">
+         <StyledSocLink href="https://www.youtube.com/" aria-label="youtube Xperiencify">
            <XperiencifyIcons type="social-youtube" />
          </StyledSocLink>
-         <StyledSocLink href="https://www.twitter.com/">
+         <StyledSocLink href="https://www.twitter.com/" aria-label="twitter Xperiencify">
            <XperiencifyIcons type="social-twitter" />
          </StyledSocLink>
      </FooterFooter>
@@ -75,7 +77,7 @@ const LinksFooter = styled.div`
 `
 
 
-const StyledLi = styled.li`
+const StyledLi = styled.div`
   float: left;
   margin-bottom:0;
   list-style-type: none;

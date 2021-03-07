@@ -8,9 +8,10 @@ import CategoryList from "../components/CategoryList/CategoryList"
 const BlogCategoryPostListing = props => {
   const blogPosts = props.data.allContentfulBlogPost.edges
   const categoriesList = props.pageContext.categoryList
-  
+  const currentCat = props.pathContext.category
   return (
   <Layout>
+    <SEO title={`Xperiencify ${currentCat}`} keywords={[`Xperiencify`, `courses guide`, `courses`]} />
     <Container>
         <CategoryList categories={categoriesList} listingType="/blog"/>
         <BlogListing data={blogPosts} />
@@ -43,6 +44,11 @@ export const BlogCategoryListingPageQuery = graphql`
               title
               fluid(maxWidth: 600) {
                 ...GatsbyContentfulFluid_withWebp
+              }
+            }
+            blogBody {
+              childMarkdownRemark {
+                timeToRead
               }
             }
             featured

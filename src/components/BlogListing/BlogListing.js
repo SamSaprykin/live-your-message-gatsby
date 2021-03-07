@@ -8,6 +8,7 @@ const BlogListing = ({
   data,
   bannerAdData
 }) => {
+  
   return (
     <>
       <WrapperCards>

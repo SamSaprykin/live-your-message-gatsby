@@ -5,6 +5,8 @@ import SEO from "../components/seo"
 import SubscribeSection from "../components/SubscribeSection/SubscribeSection"
 import BlogPostBody from "../components/BlogPostBody/BlogPostBody"
 import SimilarArticlesList from "../components/SimilarArticles/SimilarArticles"
+
+
 const subscribeSectionData = {
   subhead:"WEEKLY SALES NEWSLETTER",
   title:"Actionable sales advice",
@@ -13,19 +15,17 @@ const subscribeSectionData = {
 }
 
 const BlogPostTemplate = props => {
-  
   const postData = props.data.contentfulBlogPost
   const postBody = props.data.contentfulBlogPost.blogBody.childMarkdownRemark.html
   const htmlAst = props.data.contentfulBlogPost.blogBody.childMarkdownRemark.htmlAst
   const headings = props.data.contentfulBlogPost.blogBody.childMarkdownRemark.headings
   const slug = props.data.contentfulBlogPost.slug
   const postInfo = props.pageContext
- 
+  const blogPostTitle = props.data.contentfulBlogPost.blogPostTitle
   return (
     <Layout>
       <Container>
-      <SEO title="Blog post template" />
-
+      <SEO title={blogPostTitle} keywords={[`Xperiencify`, `Xperiencify blog`, `courses`]}/>
       <BlogPostBody 
         data={postBody} 
         headings={headings} 
@@ -63,8 +63,8 @@ export const blogPostQuery = graphql`
       }
       blogBody {
         childMarkdownRemark {
-          html
           htmlAst
+          timeToRead
           headings {
             value
             id

@@ -103,8 +103,7 @@ const IndexPage = () => {
     
   return (
   <Layout>
-    
-      <SEO title="Home" keywords={[`gatsby`, `application`, `react`]} />
+      <SEO title="Xperiencify" keywords={[`Xperiencify`, `courses guide`, `courses`]} />
       <HeroSection 
         heroImage={heroIndexData.imageData.imageSrc}
         title={heroIndexData.contentData.title}

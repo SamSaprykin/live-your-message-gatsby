@@ -13,76 +13,6 @@ const SubscribeSection = ({
   type,
   ...otherProps
 }) => {
-  
-  const [inputs, setInputs] = useState({
-    email: "",
-  })
-  const [errors, setErrors] = useState({
-    emailError: "",
-  })
-  const handleOnChange = event => {
-    event.persist()
-    setInputs(prev => ({
-      ...prev,
-      [event.target.id]: event.target.value,
-    }))
-    
-  }
-  const re =  /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-  const checkEmailInput = event => {
-    event.persist()
-    if(inputs.email.length === 0) {
-      setErrors(prev => ({
-        ...prev,
-        emailError: "E-mail is required "
-      }))
-    } else if(inputs.email.length < 2 || re.test(inputs.email) === false){
-      setErrors(prev => ({
-        ...prev,
-        emailError: "Please provide a valid e-mail address."
-      }))
-    } else {
-      setTimeout(() => {
-        setErrors(prev => ({
-          ...prev,
-          emailError: ""
-        }))
-      }, 500)
-     
-    }
-  }
-  const handleOnSubmit = event => {
-    event.preventDefault();
-    setServerState({ submitting: true });
-    
-    axios({
-      method: "POST",
-      url: `https://formspree.io/f/${process.env.GATSBY_FORMSPREE_SUBSCRIBE_FORM_ID}`,
-      data: inputs
-    })
-      .then(r => {
-        handleServerResponse(true, "Thanks!");
-        navigate('/thank-you');
-      })
-      .catch(r => {
-        handleServerResponse(false, r.response.data.error);
-      });
-  };
-  const [serverState, setServerState] = useState({
-    submitting: false,
-    status: null,
-  })
-  const handleServerResponse = (ok, msg) => {
-    setServerState({
-      submitting: false,
-      status: { ok, msg },
-    })
-    if (ok) {
-      setInputs({
-        email: "",
-      })
-    }
-  }
   return (
     <SubscribeWrapper type={type}>
         <FormInfo>
@@ -103,16 +33,16 @@ const SubscribeSection = ({
         </FormInfo>
         
         <SubscribeForm 
-          onSubmit={handleOnSubmit}
           method="post"
+          action="https://app.campaignrefinery.com/subscribe/form/id/ed3918a3-1971-440d-92d8-c4883ae72b19"
+          id="1136__cr_form"
           type={type}
         >
           <InputContainer>
             <StyledInput 
               placeholder="Enter your email" 
-              onChange={handleOnChange}
-              onBlur={checkEmailInput}
               type="email" 
+              name="email"
               id="email" 
             />
             
@@ -122,12 +52,6 @@ const SubscribeSection = ({
               </button>
             )}
           </InputContainer>
-          
-          <FormTextError error={errors.emailError}><span>{errors.emailError}</span></FormTextError>
-          <AgreeText>
-            <input type="checkbox" />
-            <p>I agree to receive communications from Close. I can unsubscribe at any time.</p>
-          </AgreeText>
           {ctaInfo && (
             <ButtonCta type="submit" >
               <h5>{ctaText}</h5>

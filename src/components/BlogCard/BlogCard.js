@@ -12,18 +12,17 @@ import { Link } from "gatsby"
 */
 
 const BlogCard = ({
-  minHeight,
   type,
   children,
   headline,
-  summary,
-  publishDate,
-  categories,
   cardData,
   realatedCard,
   ...otherProps
 }) => {
-  
+  let readingTime 
+  if(cardData.blogBody !== undefined) {
+    readingTime = cardData.blogBody.childMarkdownRemark.timeToRead
+  }
   return (
     <StyledLink to={`/blog/${cardData.slug}`}>
       <MainCard
@@ -52,14 +51,14 @@ const BlogCard = ({
                 {cardData.blogPostAuthor}
               </BlogPostAuthor>
               <BlogPostReadingTime>
-                9 min read
+                {readingTime} min read
               </BlogPostReadingTime>
             </BlogCardInfo>
           )}
         {type === "featured" && (
             <BlogCardInfo>
               <BlogPostAuthor type={type}>
-                Murray Gray · 9 min read
+                {cardData.blogPostAuthor} · {readingTime} min read
               </BlogPostAuthor>
               <CardCta>
                 Keep reading →
@@ -75,13 +74,16 @@ const BlogCard = ({
 export default BlogCard
 
 BlogCard.propTypes = {
+  realatedCard: PropTypes.string,
+  type: PropTypes.string,
   width: PropTypes.string,
   type: PropTypes.string,
 }
 
 BlogCard.defaultProps = {
   width: "100%",
-  type:"standard"
+  type:"standard",
+  realatedCard:"false",
 }
 
 const MainCard = styled.div`
@@ -133,6 +135,12 @@ const ImageCover = styled.div`
       ? ""
       : "296px"};
   overflow:hidden;
+  .gatsby-image-wrapper {
+    width: 100%;
+    height: 100%;
+    vertical-align: middle;
+    object-fit: cover;
+  }
   img {
     width: 100%;
     height: 100%;
@@ -172,7 +180,7 @@ const CardContent = styled.div`
   }
 `
 
-const CategoryBlog = styled.h5`
+const CategoryBlog = styled.span`
   text-transform: uppercase;
   font-size: ${props =>
     props.type === "featured"

@@ -38,6 +38,7 @@ const Navigation = ({}) => {
                           src="/xperiencify-logo.svg" 
                           width="196"
                           height="40"
+                          alt="xperiencify-logo"
                         />
                     </Link> 
                 </HeaderLogo>
@@ -93,7 +94,7 @@ const Navigation = ({}) => {
     )
 }
 
-const StyledUl = styled.ul`
+const StyledUl = styled.div`
   list-style-type: none;
   margin: 0;
   padding: 1.5rem 5vw;
@@ -124,7 +125,7 @@ const NavRow = styled.div`
     margin-top:8px;
   }
 `
-const StyledLi = styled.li`
+const StyledLi = styled.div`
   float: left;
   margin-bottom:0;
   @media ${device.tablet} {

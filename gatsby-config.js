@@ -2,9 +2,9 @@ require("dotenv").config({ path: ".env" })
 
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Starter w/ styled-components`,
-    description: `Gatsby starter using styled-components`,
-    author: `@blakenoll`,
+    title: `Xperiencify`,
+    description: `Gatsby Xperiencify project`,
+    author: `Murray Gray`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -65,6 +65,12 @@ module.exports = {
     `gatsby-plugin-remove-trailing-slashes`,
     `gatsby-plugin-preload-fonts`,
     `gatsby-plugin-styled-components`,
+    {
+      resolve: `gatsby-plugin-offline`,
+      options: {
+        precachePages: [`/blog/*`],
+      },
+    },
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.app/offline
     // 'gatsby-plugin-offline',

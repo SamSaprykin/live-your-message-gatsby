@@ -6,7 +6,7 @@ import useFeaturedPost from "../hooks/useFeaturedPost"
 import BlogCard from "../components/BlogCard/BlogCard"
 import CategoryList from "../components/CategoryList/CategoryList"
 import SubscribeSection from "../components/SubscribeSection/SubscribeSection"
-
+import SEO from "../components/seo"
 const subscribeSectionData = {
   subhead:"WEEKLY SALES NEWSLETTER",
   title:"Actionable sales advice",
@@ -34,6 +34,7 @@ const BlogPostListing = props => {
   )
   return (
   <Layout>
+    <SEO title="Xperiencify blog posts" keywords={[`Xperiencify`, `Xperiencify blog`, `courses`]} />
     <Container>
         {featured_post}
         <CategoryList categories={categoriesList} listingType="/blog"/>
@@ -70,6 +71,11 @@ export const BlogListingPageQuery = graphql`
               title
               fluid(maxWidth: 600) {
                 ...GatsbyContentfulFluid_withWebp
+              }
+            }
+            blogBody {
+              childMarkdownRemark {
+                timeToRead
               }
             }
             featured
