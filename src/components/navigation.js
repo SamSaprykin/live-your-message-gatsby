@@ -24,8 +24,7 @@ const tempNavLinks = [
       
   },
 ]
-
-const Navigation = ({}) => {
+const Navigation = () => {
     const [navbarOpen, setNavbarOpen] = useState(false)
     
     return (
@@ -150,11 +149,6 @@ const StyledLi = styled.div`
   }
 `;
 
-
-
-
-
-
 const StyledLink = styled(Link)`
   display: flex;
   align-items:center;
@@ -193,7 +187,6 @@ const StyledLink = styled(Link)`
   }
 `;
 
-
 const HeaderLogo = styled.div`
     width:100%;
     max-width:196px;
@@ -223,8 +216,6 @@ const HeaderLogo = styled.div`
 const XperincifyLogo= styled.img`
     margin-bottom:0;
 `
-
-
 const CtaWrapper = styled.div`
   display:flex;
   width:100%;
@@ -240,7 +231,6 @@ const CtaWrapper = styled.div`
     z-index:-1;
   }
 `
-
 
 const NavItems = styled.div`
   margin-left: 4rem;
@@ -258,7 +248,6 @@ const NavItems = styled.div`
     overflow: auto;
   }
 `
-
 
 const Hamburger = styled.div`
   background-color: #3e444e;
@@ -372,8 +361,6 @@ const MenuItems = styled.div`
     padding:80px 24px 40px 24px;
   }
 `
-
-
 
 export default Navigation
 

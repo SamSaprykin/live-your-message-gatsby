@@ -1,7 +1,7 @@
 import React from "react"
 import styled from "styled-components"
 import { device } from "../../styles/constants"
-import { Container, MainWrapper } from "../layoutComponents"
+import { Container } from "../layoutComponents"
 import {
     XperiencifyImage,
 } from "../BlockElements/BlockElements"

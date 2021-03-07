@@ -77,7 +77,6 @@ BlogCard.propTypes = {
   realatedCard: PropTypes.string,
   type: PropTypes.string,
   width: PropTypes.string,
-  type: PropTypes.string,
 }
 
 BlogCard.defaultProps = {

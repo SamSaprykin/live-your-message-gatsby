@@ -35,10 +35,9 @@ const SimilarArticlesComponent = ({ articles }) =>
                     
                     return (
                         
-                            <PostItem>
+                            <PostItem key={i}>
                                 <BlogCard  
                                     cardData={article.article.node} 
-                                    key={i} 
                                     type="standard"
                                     realatedCard="true"
                                 /> 

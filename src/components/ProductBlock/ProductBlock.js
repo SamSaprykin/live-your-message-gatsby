@@ -1,12 +1,7 @@
 import React from "react"
 import styled from "styled-components"
-import { device } from "../../styles/constants"
-import BlogCard from "../BlogCard/BlogCard"
 import { Link } from "gatsby"
-import {
-    XperiencifyImage,
-    XperiencifyContent,
-  } from "../BlockElements/BlockElements"
+
 const ProductBlock = ({
     stepName,
     stepText,
@@ -50,7 +45,7 @@ const ProductBlock = ({
                 {testimonialStepAuthorName && (
                     <TestimonialPerson>
                         <PersonAvatar>
-                            <img src={testimonialAuthorIcon} width="40" height="40" />
+                            <img src={testimonialAuthorIcon} width="40" height="40" alt="author-icon" />
                         </PersonAvatar>
                         <PersonInfo>
                             <h5>

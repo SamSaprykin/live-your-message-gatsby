@@ -1,6 +1,6 @@
 import React from "react"
 import styled from "styled-components"
-import { device, colors } from "../../styles/constants"
+import { device } from "../../styles/constants"
 import { Link } from "gatsby"
 
 const CategoryList = ({
@@ -20,7 +20,7 @@ const CategoryList = ({
         {categories.map(category => {
           const slug = `${(category).replace(/([a-z])([A-Z])/g, '$1-$2').replace(/\s+/g, '-').toLowerCase()}`
           return (
-            category.toLowerCase() != "uncategorized" && (
+            category.toLowerCase() !== "uncategorized" && (
               <CategoryItem
                 key={category.toLowerCase()}
                 partiallyActive={true}

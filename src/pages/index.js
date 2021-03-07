@@ -1,14 +1,11 @@
 import React from "react"
-import { Link } from "gatsby"
-
 import Layout from "../components/layout"
-import Image from "../components/image"
-
 import SEO from "../components/seo"
 import HeroSection from "../components/HeroSections/HeroSection"
 import TrustBar from "../components/TrusBar/TrustBar"
 import ProductWorkflow from "../components/ProductWorkflow/ProductWorkflow"
 import ProductReviews from "../components/ProductReviews/ProductReviews"
+
 const heroIndexData = {
   contentData:{
     title:"Turn more leads into revenue",

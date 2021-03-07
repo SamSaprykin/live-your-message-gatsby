@@ -16,7 +16,7 @@ const TrustBar = ({ logoImages, margin, headline }) => {
         <TrustBarLogos justify="space-between">
             {logoImages?.map((image, index) => {
             return (
-                <StyledLogo>
+                <StyledLogo key={index}>
                     <XperiencifyImage
                         width="106" 
                         height="60"
@@ -55,7 +55,7 @@ const StyledLogo = styled.div`
 
 const TrustBarWrapper = styled.div`
   width: 100%;
-  padding: 0 2rem 96px;
+  padding:96px 2rem;
   text-align: center;
   position:relative;
   margin: ${props => props.margin};

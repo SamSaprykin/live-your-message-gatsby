@@ -1,6 +1,4 @@
-import React, {useState} from "react"
-import { navigate } from 'gatsby'
-import axios from "axios"
+import React from "react"
 import styled from "styled-components"
 import { device } from "../../styles/constants"
 
@@ -65,13 +63,7 @@ const SubscribeSection = ({
   )
 }
   
-
-
-
-
 export default SubscribeSection
-
-
 
 
 const SubscribeWrapper = styled.div`
@@ -148,10 +140,6 @@ const SubscribeFormText = styled.p`
     }
 `
 
-
-
-
-
 const SubscribeForm = styled.form`
     margin:0 auto;
     width:100%;
@@ -167,10 +155,6 @@ const SubscribeForm = styled.form`
       max-width:500px;
     }
 `
-
-
-
-
 
 const InputContainer = styled.div`
     display:flex;
@@ -239,7 +223,6 @@ const ButtonCta = styled.button`
   }
 `
 
-
 const StyledInput = styled.input`
     width:100%;
     background-color:#1A6AFF;
@@ -262,47 +245,4 @@ const StyledInput = styled.input`
      
     }
     
-`
-
-
-
-const FormTextError = styled.div`
-  height:24px;
-  position:relative;
-  overflow:hidden;
-  margin-top:8px;
-  span {
-      color:#FA4E4E;
-      font-family:Inter,system-ui,sans-serif;
-      bottom: ${({ error }) => {
-        if (error === "") return "24px"
-        if (error !== "") return "4px"
-      }};
-      opacity: ${({ error }) => {
-        if (error === "") return "0"
-        if (error !== "") return "1"
-      }};
-      display:block;
-      position:absolute;
-      transition: all 1s ease-in-out;
-      font-size:14px;
-      width:100%;
-  }
-`
-
-const AgreeText = styled.div`
-  width:100%;
-  display:flex;
-  justify-content:flex-start;
-  max-width:500px;
-  align-items:center;
-  p {
-    font-size:13px;
-    font-family: sans-serif;
-    margin-bottom:0;
-    line-height:13px;
-  }
-  input {
-    margin-right:6px;
-  }
 `

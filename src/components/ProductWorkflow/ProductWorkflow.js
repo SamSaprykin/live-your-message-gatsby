@@ -1,7 +1,6 @@
 import React from "react"
 import styled from "styled-components"
 import { device } from "../../styles/constants"
-import BlogCard from "../BlogCard/BlogCard"
 import ProductBlock from "../ProductBlock/ProductBlock"
 import { Container } from "../layoutComponents"
 const ProductWorkflow = ({
@@ -24,7 +23,7 @@ const ProductWorkflow = ({
             {
                 stepsData?.map((stepItem,index) => {
                     return (
-                        <>
+                        <div key={index}>
                             {stepItem && (
                                 <ProductBlock
                                     key={index} 
@@ -40,7 +39,7 @@ const ProductWorkflow = ({
                                     stepVisual={stepItem.stepVisual}
                                 />
                             )}
-                        </>
+                        </div>
                     )
                 })
             }

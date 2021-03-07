@@ -6,7 +6,6 @@
   "author": "Murray Gray",
   "dependencies": {
     "@contentful/rich-text-types": "^14.1.2",
-    "axios": "^0.21.1",
     "babel-plugin-styled-components": "^1.11.1",
     "gatsby": "^2.25.0",
     "gatsby-image": "^2.2.30",
